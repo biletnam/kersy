@@ -1,6 +1,6 @@
 
 {% for event in events %}
-    <a href="{% url 'events:play_detail' slug=event.slug %}">{{ event.title }}
+    <a href="{% url 'events:event_detail' slug=event.slug %}">{{ event.title }}
     </a>
     {{ event.start_date }}
     {{ event.end_date }}
