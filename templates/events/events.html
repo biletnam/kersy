@@ -1,0 +1,11 @@
+<div class='row'>
+{% for event in events %}
+	<div class='col-xs-4 {{ col_class_set }}'>
+	{% include "events/events_thumbnail.html" with event=event price="True" %}
+	</div>
+	{% if not col_class_set %}
+{% cycle '' '' '</div><div class="row">' %}
+{% endif %}
+{% endfor %}
+
+</div>

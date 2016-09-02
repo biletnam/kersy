@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Play and Showing</th>
+        <th>Theater</th>
+        <th>No. of seats available</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for showing in showings %}
+      <tr>
+                <td>
+            <a href="{% url 'organizer_detail' pk=showing.pk %}">{{ showing.event.title }}:</a>
+            {{ showing.date }}-{{ showing.hour }}</td>
+        <td>{{ showing.event.theater }}</td>
+        <td>{{ showing.no_of_seats }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+
+  </table>
+
+{% endblock %}

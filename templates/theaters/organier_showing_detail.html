@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="row">
+
+    {% for order in orders %}
+    <p>{{ order.user.email }}</p>
+    {% for item in order.cart.cartitem_set.all %}
+    <p>{{ item.quantity }}</p>
+        <p>{{ item }}</p>
+    {% endfor %}
+
+    {% endfor %}
+    </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Play and Showing</th>
+        <th>Theater</th>
+        <th>No. of seats</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+              {% for showing in showings %}
+
+        <td>{{ showing.event.title }}:{{ showing.date }}-{{ showing.hour }}</td>
+        <td>{{ showing.event.theater }}</td>
+        <td>{{ showing.no_of_seats }}</td>
+          {% endfor %}
+
+      </tr>
+    </tbody>
+  </table>
+
+{% endblock %}

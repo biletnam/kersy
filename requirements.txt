@@ -1,0 +1,15 @@
+ajaxuploader==0.3.8
+braintree==3.19.0
+dj-database-url==0.4.1
+Django==1.8.9
+django-crispy-forms==1.6.0
+django-filter==0.13.0
+django-form-utils==1.0.3
+django-hvad==1.5.1
+django-registration-redux==1.4
+django-storages==1.4.1
+gunicorn==19.6.0
+Pillow==2.9.0
+psycopg2==2.6.2
+requests==2.10.0
+whitenoise==3.2.1

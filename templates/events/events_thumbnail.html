@@ -1,0 +1,11 @@
+<div class="thumbnail text-center">
+<h4><a href='{{ event.get_absolute_url }}'>{{ event.title }}</a></h4>
+	{% if event.get_image_url %}
+	<a href='{{ event.get_absolute_url }}'><img id='img' class='img-responsive' src='{{ event.get_image_url }}' /></a><br/>
+	{% endif %}
+    <p>
+  	{% if price == "True" %}
+		{{ event.showing_set.first.get_html_price }}
+	{% endif %}
+
+</div>
