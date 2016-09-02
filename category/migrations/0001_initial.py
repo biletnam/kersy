@@ -15,29 +15,17 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('slug', models.SlugField(unique=True, null=True, blank=True)),
+                ('title', models.CharField(max_length=90, unique=True, null=True, blank=True)),
+                ('parent_category', models.ForeignKey(blank=True, to='category.Category', null=True)),
             ],
             options={
-                'abstract': False,
-            },
-        ),
-        migrations.CreateModel(
-            name='CategoryTranslation',
-            fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('title', models.CharField(unique=True, max_length=90)),
-                ('language_code', models.CharField(max_length=15, db_index=True)),
-                ('master', models.ForeignKey(related_name='translations', editable=False, to='category.Category', null=True)),
-            ],
-            options={
-                'managed': True,
-                'abstract': False,
-                'db_table': 'category_category_translation',
-                'db_tablespace': '',
-                'default_permissions': (),
+                'ordering': ['slug'],
+                'verbose_name': 'Category',
+                'verbose_name_plural': 'Categories',
             },
         ),
         migrations.AlterUniqueTogether(
-            name='categorytranslation',
-            unique_together=set([('language_code', 'master')]),
+            name='category',
+            unique_together=set([('slug', 'parent_category')]),
         ),
     ]
