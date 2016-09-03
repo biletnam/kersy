@@ -1,8 +1,6 @@
 from django.core.urlresolvers import reverse
 from django.db import models
-from django.db.models.signals import pre_save
 from django.utils.text import slugify
-from hvad.models import TranslatableModel, TranslatedFields
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -18,7 +16,7 @@ class Category(models.Model):
         return '%s' % self.slug or u''
 
     def get_absolute_url(self):
-        return reverse("category_detail", kwargs={"slug": self.slug})
+        return reverse("category:detail", kwargs={"slug": self.slug})
 
     class Meta:
         unique_together = ('slug', 'parent_category',)

@@ -25,6 +25,8 @@ from project import settings
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^accounts/', include('registration.backends.default.urls')),
+    url(r'', include('category.urls', namespace='category')),
+
     url(r'^$', plays_views.home, name='home'),
 
     url(r'^dashboard/$', theater_views.organizer_dashboard, name='dashboard'),
@@ -40,5 +42,5 @@ urlpatterns = [
     url(r'^checkout/final/$', CheckoutFinalView.as_view(), name='checkout_final'),
 ]
 if settings.DEBUG:
-	urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-	urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

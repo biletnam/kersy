@@ -1,8 +1,5 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView
-from rest_framework import viewsets
-
-from .serializers import CategorySerializer
 from .models import Category
 # Create your views here.
 
@@ -18,9 +15,7 @@ class CategoryDetail(DetailView):
     template_name = 'category/category_detail.html'
     slug_url_kwarg = 'slug'
 
-class CategoryAPI(viewsets.ModelViewSet):
-    queryset = Category.objects.all()
-    serializer_class = CategorySerializer
+
 
 # TODO: add parent list view
 def parent_list(request):

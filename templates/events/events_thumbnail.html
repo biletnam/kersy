@@ -1,11 +1,21 @@
 <div class="thumbnail text-center">
-<h4><a href='{{ event.get_absolute_url }}'>{{ event.title }}</a></h4>
-	{% if event.get_image_url %}
-	<a href='{{ event.get_absolute_url }}'><img id='img' class='img-responsive' src='{{ event.get_image_url }}' /></a><br/>
-	{% endif %}
-    <p>
-  	{% if price == "True" %}
-		{{ event.showing_set.first.get_html_price }}
-	{% endif %}
+    <h4><a href='{{ event.get_absolute_url }}'>{{ event.title }}</a></h4>
+    {% if event.get_image_url %}
+        <a href='{{ event.get_absolute_url }}'><img id='img' class='img-responsive'
+                                                    src='{{ event.get_image_url }}'/></a><br/>
+    {% endif %}
 
+    <div class="btn-block">
+
+        {% if event.showing_set.first.get_html_price %}
+            <button class="btn btn-default btn-sm">
+                {{ event.showing_set.first.get_html_price }}KWD
+            </button>
+            {% else %}
+            <button class="btn btn-default btn-sm">
+                Free Event
+            </button>
+        {% endif %}
+        <button class="btn btn-default btn-sm">{{ event.start_date }}</button>
+    </div>
 </div>

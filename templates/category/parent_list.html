@@ -1,0 +1,12 @@
+{% extends 'base.html'%}
+
+{% load i18n %}
+{% block content %}
+{% for category in parents %}
+    <p>
+        <a href="{% url 'category:detail' slug=category.slug %}">
+            {{ category.title }}
+        </a>
+    </p>
+    {% endfor %}
+{% endblock %}

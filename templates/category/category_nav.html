@@ -1,0 +1,7 @@
+{% load i18n %}
+
+{% for category in categories %}
+        <li class="list-group-item"><a href="{% url 'category:detail' slug=category.slug %}">{{ category.title }}</a></li>
+{#    </ul>#}
+{#    TODO: add parent categories #}
+{% endfor %}

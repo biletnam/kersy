@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="jumbotron">
+        <div class="h3 text-center">{{ category.title }}</div>
+    </div>
+    <div class="row">
+        {% for store in category.store_set.all %}
+            {% include 'snippet/store_list_snippet.html' %}
+        {% endfor %}
+    </div>
+{% endblock content %}

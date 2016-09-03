@@ -17,7 +17,7 @@ Organizer dashboard to view all reservations for a single showing
 
 @login_required
 def organizer_dashboard(request):
-    organizer = Organizer.objects.filter(user=request.user)
+    organizer = Organizer.objects.get(user=request.user)
     showings = Showing.objects.filter(event__organizer=organizer)
     return render(request, 'theaters/dashboard.html', {'showings': showings})
 
@@ -27,4 +27,3 @@ def organizer_showing_detail(request, pk):
     cart = Cart.objects.filter(items=showing)
     orders = Order.objects.filter(cart=cart)
     return render(request, 'theaters/organier_showing_detail.html', {'showing': showing, 'orders': orders})
-

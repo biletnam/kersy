@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views import generic
 
+from category.models import Category
 from .models import Event, Showing
 
 
@@ -33,11 +34,11 @@ def home(request):
     title = 'Sign Up Now'
 
     events = Event.objects.all().order_by("?")[:6]
-
+    categories = Category.objects.all()
     context = {
         "title": title,
         "events": events,
-
+        "categories": categories,
     }
 
 

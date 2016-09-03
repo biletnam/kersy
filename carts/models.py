@@ -66,6 +66,10 @@ class Cart(models.Model):
         self.subtotal = "%.2f" % (subtotal)
         self.save()
 
+    #     TODO: update showing no_of_seats when added to cart
+    # def decrement_seats(self):
+    #     self.cartitem_set.
+
 
 def do_tax_and_total_receiver(sender, instance, *args, **kwargs):
     subtotal = Decimal(instance.subtotal)
@@ -75,8 +79,6 @@ def do_tax_and_total_receiver(sender, instance, *args, **kwargs):
     instance.tax_total = "%.2f" % (tax_total)
     instance.total = "%.2f" % (total)
 
-
-# instance.save()
 
 
 
