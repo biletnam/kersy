@@ -1,11 +1,35 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block content %}
     <div class="jumbotron">
         <div class="h3 text-center">{{ category.title }}</div>
     </div>
     <div class="row">
-        {% for store in category.store_set.all %}
-            {% include 'snippet/store_list_snippet.html' %}
+        {% for event in category.event_set.all %}
+            <div class="col-sm-6 col-xs-12 col=md-6 col-lg-6">
+
+                <div class="media">
+                    <div class="media-left media-top">
+                        <a href="{% url 'events:event_detail' slug=event.slug %}">
+                            <img class="media-object" src="{{ event.get_image_url }}"
+                                 width="300" alt="">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <a href="{% url 'events:event_detail' slug=event.slug %}"><h3 class="media-heading">
+                            {{ event.title }}</h3></a>
+
+                        <p class="media-heading">
+                            {% if event.info %}{{ event.info }}{% else %}{% trans 'No info found' %}{% endif %}<br>
+                        </p>
+
+                        <p class="media-body"><strong>{{ event.start_date }},</strong></p>
+                        <p>Last showing: <strong>{{ event.end_date }}</strong></p>
+
+                    </div>
+                    <hr>
+                </div>
+            </div>
         {% endfor %}
     </div>
 {% endblock content %}
