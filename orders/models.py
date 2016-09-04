@@ -90,7 +90,6 @@ class Order(models.Model):
         self.status = "paid"
         if order_id and not self.order_id:
             self.order_id = order_id
-        self.cart.items.no_of_seats
         self.save()
 
 
